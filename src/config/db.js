@@ -6,15 +6,17 @@ const pool = new Pool({
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT || 5432,
-    ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false
+    ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
 });
 
-pool.on('error', (err) => {
-    console.error('Unexpected error on idle client', err);
-    process.exit(-1);
-});
-
-module.exports = {
-    query: (text, params) => pool.query(text, params),
-    getClient: options => pool.connect(options)
+const connectDB = async options => {
+    try {
+        await pool.connect(options); // Test the connection
+        console.log('Database connected successfully');
+    } catch (error) {
+        console.error('Database connection error:', error);
+        process.exit(1); // Exit the process if the connection fails
+    }
 };
+
+module.exports = { connectDB, pool };
