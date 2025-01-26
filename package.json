@@ -10,7 +10,8 @@
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "sequelize": "^6.37.5",
-    "swagger": "^0.7.5"
+    "swagger": "^0.7.5",
+    "winston": "^3.17.0"
   },
   "name": "auth",
   "version": "1.0.0",
