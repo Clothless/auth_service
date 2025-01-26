@@ -8,6 +8,7 @@
     "gitignore": "^0.7.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
+    "sequelize": "^6.37.5",
     "swagger": "^0.7.5"
   },
   "name": "auth",
